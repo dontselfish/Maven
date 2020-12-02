@@ -1,5 +1,22 @@
 # Maven的安装步骤
 
+## <补充>
+
+    - 为了更快完成编译可以使用阿里巴巴镜像仓库，因为中央仓库是国外的下载速度较慢。
+
+    - 编辑Maven>conf文件夹内的settings.xml文件
+    
+    在这行里添加
+    <mirrors>
+        <mirror>
+        <id>aliyunmaven</id>
+        <mirrorOf>*</mirrorOf>
+        <name>阿里云公共仓库</name>
+        <url>https://maven.aliyun.com/repository/public</url>
+    </mirrors>
+
+![补充1-1](note/13.PNG)
+
 ## （一）下载安装包与安装JDK
 
 - Maven官网链接：http://maven.apache.org/
@@ -34,7 +51,7 @@
     <变量名>>JAVA_HOME
     <变量值>>C:\Program Files\Java\jdk1.7.0_80
 
-    *号代表maven安装包文件夹所在的文件路径
+    *号代表maven安装文件夹所在的文件路径
 
 ![图2-4](note/4.PNG)
 
@@ -94,3 +111,42 @@
 
 ### 3. 新建java类
 
+新建文件夹(包)
+
+    - com(com主包)>dontselfish(dontselfish子包)
+
+新建java文件
+
+    - 在com>dontselfish下新建HelloMaven.java文件
+    
+配置HelloMaven.java
+
+    package com.dontselfish;
+    public class HelloMaven {
+    public int add (int n1,int n2){
+        return n1+n2;
+    }
+    public static void main(String args[]){
+        HelloMaven hello = new HelloMaven();
+        int res = hello.add(10,20);
+        System.out.println("10+20="+res);
+    }
+    }
+
+之后保存即可
+
+### 4.检查Maven安装
+
+如下图所示：
+
+![图3-11](note/11.PNG)
+
+就代表安装和配置成功。
+
+### 5.编译HelloMaven.java文件
+
+    - 使用命令行工具cd进入HelloMaven.java所在的目录
+    
+    - 使用命令mvn compile 开始进行编译
+
+    - 直到最后提示Build Success并且没有提示ERROR就表示已经成功编译
